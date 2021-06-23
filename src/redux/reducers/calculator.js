@@ -1,27 +1,35 @@
-import {INPUT_NUMBER, PLUS, MINUS, MULTIPLY, DIVIDE, EQUAL, CLEAR} from '../actions/types';
+import {
+  INPUT_NUMBER,
+  PLUS,
+  MINUS,
+  MULTIPLY,
+  DIVIDE,
+  EQUAL,
+  CLEAR,
+} from "../actions/types";
 
 const initialAppState = {
   inputValue: 0,
-  operator: '',
+  operator: "",
   resultValue: 0,
   calculate: false,
   showingResult: false,
-}
+};
 
-const calculator = (state=initialAppState, action) => {
+const calculator = (state = initialAppState, action) => {
   switch (action.type) {
     case INPUT_NUMBER:
       return {
         ...state,
-        inputValue: state.inputValue*10+action.number,
+        inputValue: state.inputValue * 10 + action.number,
         showingResult: false,
       };
     case PLUS:
-      if (state.calculate===true) {
+      if (state.calculate === true) {
         return {
           ...state,
           inputValue: 0,
-          operator: '+',
+          operator: "+",
           resultValue: state.resultValue + state.inputValue,
           showingResult: true,
         };
@@ -29,64 +37,64 @@ const calculator = (state=initialAppState, action) => {
         return {
           ...state,
           inputValue: 0,
-          operator: '+',
+          operator: "+",
           calculate: true,
           resultValue: state.inputValue,
           showingResult: true,
         };
       }
     case MINUS:
-      if (state.calculate===true) {
+      if (state.calculate === true) {
         return {
           ...state,
           inputValue: 0,
-          operator: '-',
-          resultValue: state.resultValue-state.inputValue,
+          operator: "-",
+          resultValue: state.resultValue - state.inputValue,
           showingResult: true,
         };
       } else {
         return {
           ...state,
           inputValue: 0,
-          operator: '-',
+          operator: "-",
           calculate: true,
           resultValue: state.inputValue,
           showingResult: true,
         };
       }
     case MULTIPLY:
-      if (state.calculate===true) {
+      if (state.calculate === true) {
         return {
           ...state,
           inputValue: 0,
-          operator: '*',
-          resultValue: state.resultValue*state.inputValue,
+          operator: "*",
+          resultValue: state.resultValue * state.inputValue,
           showingResult: true,
         };
       } else {
         return {
           ...state,
           inputValue: 0,
-          operator: '*',
+          operator: "*",
           calculate: true,
           resultValue: state.inputValue,
           showingResult: true,
         };
       }
     case DIVIDE:
-      if (state.calculate===true) {
+      if (state.calculate === true) {
         return {
           ...state,
           inputValue: 0,
-          operator: '/',
-          resultValue: state.resultValue/state.inputValue,
+          operator: "/",
+          resultValue: state.resultValue / state.inputValue,
           showingResult: true,
         };
       } else {
         return {
           ...state,
           inputValue: 0,
-          operator: '/',
+          operator: "/",
           calculate: true,
           resultValue: state.inputValue,
           showingResult: true,
@@ -96,50 +104,50 @@ const calculator = (state=initialAppState, action) => {
     case CLEAR:
       return {
         inputValue: 0,
-        operator: '',
+        operator: "",
         calculate: false,
         resultValue: 0,
         showingResult: false,
       };
     case EQUAL:
-      switch(state.operator) {
-        case '+':
+      switch (state.operator) {
+        case "+":
           return {
             inputValue: state.resultValue + state.inputValue,
-            operator: '',
+            operator: "",
             calculate: false,
             resultValue: state.resultValue + state.inputValue,
-            showingResult: true
+            showingResult: true,
           };
-        case '-':
+        case "-":
           return {
             inputValue: state.resultValue - state.inputValue,
-            operator: '',
+            operator: "",
             calculate: false,
             resultValue: state.resultValue - state.inputValue,
-            showingResult: true
+            showingResult: true,
           };
-        case '*':
+        case "*":
           return {
             inputValue: state.resultValue * state.inputValue,
-            operator: '',
+            operator: "",
             calculate: false,
             resultValue: state.resultValue * state.inputValue,
-            showingResult: true
+            showingResult: true,
           };
-        case '/':
+        case "/":
           return {
             inputValue: state.resultValue / state.inputValue,
-            operator: '',
+            operator: "",
             calculate: false,
             resultValue: state.resultValue / state.inputValue,
-            showingResult: true
+            showingResult: true,
           };
         default:
           return state;
-        }
-      default:
-        return state;
+      }
+    default:
+      return state;
   }
 };
 

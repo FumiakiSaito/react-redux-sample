@@ -1,4 +1,12 @@
-import {INPUT_NUMBER, PLUS, MINUS, MULTIPLY, DIVIDE, EQUAL, CLEAR} from './types';
+import {
+  INPUT_NUMBER,
+  PLUS,
+  MINUS,
+  MULTIPLY,
+  DIVIDE,
+  EQUAL,
+  CLEAR,
+} from "./types";
 
 export const onNumberClick = (number) => ({
   type: INPUT_NUMBER,
